@@ -1,0 +1,50 @@
+header {
+}
+
+header span {
+  display: block;
+}
+
+header h1 {
+  font-size: 5rem;
+}
+
+header span:first-child {
+  font-size: 2rem;
+}
+
+header span:last-child {
+  font-family: "Monoton", cursive;
+}
+
+.dropzone {
+  border: 2px dashed #bbb;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 50px;
+  text-align: center;
+  font: 21pt bold arial;
+  color: #bbb;
+  margin-top: 2em;
+}
+
+aside {
+    padding: 1em;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.loading span {
+    display: block;
+}
+
+.uploadBtnWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
