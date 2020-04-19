@@ -10,13 +10,34 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentView: "section",
+      currentView: "upload",
+      data: {
+        sections: [],
+        scores: {}
+      }
     };
   }
 
   handleData = (data) => {
+    
+    
+    const cleanData = {
+      sections: [
+        data.first_section_info
+      ],
+      scores: {
+        sleep_msg: data.sleep_msg,
+        sleep_score: data.sleep_score,
+        total_section_num: data.total_section_num,
+        total_sleep_time: data.total_sleep_time,
+        wtr: data.wtr,
+        wtr_msg: data.wtr_msg
+      }
+    }
+    console.log(cleanData)
     this.setState({
       currentView: "section",
+      data: cleanData 
     });
   };
 
@@ -42,12 +63,13 @@ class App extends React.Component {
             ) : null}
             {this.state.currentView == "section" ? (
               <Section
+                data={this.state.data.sections[0]}
                 onHome={this.handleViewChangeHome}
                 onScore={this.handleViewChangeScore}
               />
             ) : null}
             {this.state.currentView == "score" ? (
-              <Score onHome={this.handleViewChangeHome} />
+              <Score data={this.state.data.scores} onHome={this.handleViewChangeHome} />
             ) : null}
           </div>
         {/* </CSSTransition> */}

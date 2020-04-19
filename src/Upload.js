@@ -2,6 +2,7 @@ import React from "react";
 import "./Upload.css";
 import Dropzone from "react-dropzone";
 import ReactLoading from "react-loading";
+import axios from 'axios';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -22,12 +23,26 @@ class Upload extends React.Component {
   handleUpload = (e) => {
     this.setState({
       uploading: true,
-      files: [],
     });
 
-    setTimeout(() => {
-      this.props.onFinishAnalyze();
-    }, 2000);
+    const formData = new FormData();
+    formData.append('file', this.state.files[0])
+
+    axios.post(process.env.REACT_APP_API_URL + '/api/analysis', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then((res) => {
+      this.props.onFinishAnalyze(res.data);
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+    // setTimeout(() => {
+    //   this.props.onFinishAnalyze();
+    // }, 2000);
   };
 
   render() {

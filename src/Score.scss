@@ -1,11 +1,26 @@
-header {
-    h1 {
-        span:last-child {
-            font-family: 'Alfa Slab One', cursive;
-            font-size: 7rem;
-        }
+
+.sNumberBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numberBox {
+    span {
+        display: block;
+    }
+    span:last-child {
+        font-family: 'Alfa Slab One', cursive;
+        font-size: 7rem;
+    }
+
+    margin-left: 3rem;
+
+    &:first-child {
+        margin-left: 0;
     }
 }
+
 
 .recomm {
     max-width: 50rem;

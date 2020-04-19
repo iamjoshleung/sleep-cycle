@@ -1,9 +1,23 @@
 header {
-    span:first-child {
-        font-size: 2rem;
-        display: block;
-        margin-bottom: -1.5rem;
-    }
+    h1 {
+		span:first-child {
+			font-size: 2rem;
+			display: block;
+			margin-bottom: -1.5rem;
+		}
+
+		span:last-child {
+			font-size: 8rem;
+		}
+	}
+	h2 {
+		margin-top: -.5rem;
+		span:first-child {
+			font-size: 1.8rem;
+			font-family: "Nunito", sans-serif;
+			font-weight: 400;
+		}
+	}
 }
 
 .navigation {
