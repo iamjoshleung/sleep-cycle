@@ -37,6 +37,7 @@ class Section extends React.Component {
         },
       })
       .then((res) => {
+        console.log("updated")
         this.setState({ data: res.data.section });
       })
       .catch((err) => {
