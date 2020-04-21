@@ -6,48 +6,20 @@ import * as d3 from "d3";
 class SignalGraph extends React.Component {
     constructor(props) {
       super(props);
+
       this.state = {
-        data: [
-          { x: 0, value: -70 },
-          { x: 1, value: -68 },
-          { x: 2, value: -64 },
-          { x: 3, value: -56 },
-          { x: 4, value: -44 },
-          { x: 5, value: -42 },
-          { x: 6, value: -34 },
-          { x: 7, value: -36 },
-          { x: 8, value: -41 },
-          { x: 9, value: -53 },
-          { x: 10, value: -62 },
-          { x: 11, value: -65 },
-          { x: 12, value: -60 },
-          { x: 13, value: -45 },
-          { x: 14, value: -32 },
-          { x: 15, value: -18 },
-          { x: 16, value: -8 },
-          { x: 17, value: -5 },
-          { x: 18, value: -10 },
-          { x: 19, value: -21 },
-          { x: 20, value: -30 },
-          { x: 21, value: -28 },
-          { x: 22, value: -19 },
-          { x: 23, value: -13 },
-          { x: 24, value: -2 },
-          { x: 25, value: 7 },
-          { x: 26, value: 11 },
-          { x: 27, value: 16 },
-          { x: 28, value: 15 },
-          { x: 29, value: 8 },
-          { x: 30, value: 5 },
-        ],
+
+        data: this.props.data.x.map((x,i) => ({x, value: this.props.data.y[i]})),
+
         yAxisAttr: "value",
         xAxisAttr: "x",
-        width: window.innerWidth,               // old val of 1500 also looked good
+        width: window.innerWidth,
         height: 400,
       }
       this.chartRef = React.createRef();
       this.drawChart = this.drawChart.bind(this);
     }
+
 
     // DrawChart method
     drawChart() {
@@ -65,11 +37,11 @@ class SignalGraph extends React.Component {
                 .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
 
-
+    console.log(this.state.data)
 
       // add X axis
       let x = d3.scaleLinear()
-              .domain([0, d3.max(this.state.data, function(d) {return d.x;})])
+              .domain([0, d3.max(this.props.data.x)])
               .range([0, width]);
       svg.append("g")
             .style("color", 'black')
@@ -84,11 +56,15 @@ class SignalGraph extends React.Component {
 
       // add Y axis
       let y = d3.scaleLinear()
-              .domain([d3.min(this.state.data, function(d) {return d.value;}), d3.max(this.state.data, function(d) {return d.value;})])
+              .domain([d3.min(this.props.data.y), d3.max(this.props.data.y)])
               .range([height, 0])
       svg.append("g")
               .style("color", 'black')
               .call(d3.axisLeft(y))
+
+  //    console.log(this.state.data.x)
+  //    var data = Object.assign((this.state.data, this.props.data))
+  //   console.log(this.state.data)
 
       // Add the line
       svg.append("path")
@@ -108,7 +84,10 @@ class SignalGraph extends React.Component {
       this.drawChart();
     }
 
+
+
       render() {
+
           return (
             <div className="SignalGraph">
             </div>
