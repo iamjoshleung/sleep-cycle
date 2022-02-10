@@ -10,7 +10,7 @@
     "bulma": "^0.8.1",
     "d3": "^5.15.1",
     "generate-react-cli": "^4.0.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^10.2.2",
